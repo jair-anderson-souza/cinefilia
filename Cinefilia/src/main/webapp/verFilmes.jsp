@@ -49,14 +49,22 @@
         
     <div class="container">
         <div class="row">
-            <div class="col-md-10">
-                <a href="cadastrarFilmes.jsp" type="button" class="btn btn-danger">
-                    <span class="glyphicon glyphicon-plus"> Cadastrar Filme</span>
-                </a>
-                <h2 class="page-header">Filmes</h2>
+            <c:if test="${sessionScope.usuario != null}">
+                <div class="col-md-10">
+                    <a href="cadastrarFilmes.jsp" type="button" class="btn btn-success">
+                        <span class="glyphicon glyphicon-plus"> Cadastrar Filme</span>
+                    </a>
+                    <h2 class="page-header">Filmes</h2>
+                </div>  
+            </c:if>
             
-            </div>
             
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <c:forEach items="${sessionScope.filmesCadastrados}" var="filme">
                 <div class="col-md-3 text-center">
                     <div class="thumbnail">

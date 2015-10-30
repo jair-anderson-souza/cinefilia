@@ -5,6 +5,7 @@
  */
 package gerenciadores;
 
+import java.sql.SQLException;
 import java.util.List;
 import model.dao.FilmeDao;
 import model.exceptions.CampoNuloException;
@@ -41,14 +42,12 @@ public class GerenciadorFilme {
         }
     }
     
-    public boolean add(Filme filme, String email){
-        try{
-            this.validaFilme(filme);
-            if(gerenciadorUsuario.verificarPrevilegioUsuario(email)) {
-                return dao.add(filme);
-            }
-        }catch(Exception e){
-            e.printStackTrace();
+    public boolean add(Filme filme, String email) throws CampoNuloException, SQLException, ClassNotFoundException {
+        this.validaFilme(filme);
+        if(gerenciadorUsuario.verificarPrevilegioUsuario(email)) {
+            
+            return dao.add(filme);
+            
         }
         return false;
     }
@@ -84,5 +83,16 @@ public class GerenciadorFilme {
         }
         return null;
     }
+    
+    public Filme recuperaFilmeCompleto(Filme filme) {
+        try{
+            return dao.buscaIdFilmePorDados(filme);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    
     
 }

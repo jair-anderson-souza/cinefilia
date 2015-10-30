@@ -26,4 +26,6 @@ public interface FilmeDaoIF {
     
     public List<Filme> buscaFilmePorTitulo(String titulo) throws SQLException, ClassNotFoundException, ParseException;
     
+     public Filme buscaIdFilmePorDados(Filme filme) throws SQLException, ClassNotFoundException, ParseException;
+    
 }
