@@ -7,11 +7,8 @@ package commands;
 
 import controllers.Command;
 import gerenciadores.GerenciadorFilme;
-import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.values.Filme;
@@ -31,9 +28,8 @@ public class RecuperaFilmesCommand implements Command {
             RequestDispatcher dispatcher = null;
             GerenciadorFilme gerenciador = new GerenciadorFilme();
             List<Filme> filmes = gerenciador.buscaTodosOsFilmes();
-            request.getSession().setAttribute("filmesCadastrados", filmes);
-            response.sendRedirect("verFilmes.jsp");
-
+            request.setAttribute("filmesCadastrados", filmes);
+            request.getRequestDispatcher("verFilmes.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }

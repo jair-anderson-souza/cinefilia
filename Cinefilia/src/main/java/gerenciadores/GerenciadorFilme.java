@@ -84,13 +84,13 @@ public class GerenciadorFilme {
         return null;
     }
     
-    public Filme recuperaFilmeCompleto(Filme filme) {
+    public int recuperaFilmeCompleto(Filme filme) {
         try{
             return dao.buscaIdFilmePorDados(filme);
         }catch(Exception e){
             e.printStackTrace();
         }
-        return null;
+        return 0;
     }
 
     

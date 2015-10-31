@@ -65,7 +65,7 @@
             <br>
             <br>
             <br>
-            <c:forEach items="${sessionScope.filmesCadastrados}" var="filme">
+            <c:forEach items="${requestScope.filmesCadastrados}" var="filme">
                 <div class="col-md-3 text-center">
                     <div class="thumbnail">
                         <div class="caption">

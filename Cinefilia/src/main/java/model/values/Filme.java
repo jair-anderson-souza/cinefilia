@@ -20,7 +20,7 @@ public class Filme {
     public Filme() {
     }
     
-    public Filme(String titulo, int                                                                                                                                      ano, String sinopse, String foto, String id_filme, String IdUsuario){
+    public Filme(String titulo, int ano, String sinopse, String foto, int id_filme, String IdUsuario){
         this.titulo = titulo;
         this.ano = ano;
         this.sinopse = sinopse;

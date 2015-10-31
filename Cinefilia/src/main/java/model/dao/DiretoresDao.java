@@ -9,22 +9,23 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import model.conexao.Conexao;
-import model.interfacesdaoifs.GeneroDaoIF;
+import model.interfacesdaoifs.DiretoresDaoIF;
 import model.values.Filme;
 
 /**
  *
  * @author Anderson Souza
  */
-public class GeneroDao implements GeneroDaoIF {
+public class DiretoresDao implements DiretoresDaoIF {
     
-    public void addGeneros(Filme filme, String genero) throws SQLException, ClassNotFoundException{
+    public void addDiretores(Filme filme, String ator) throws SQLException, ClassNotFoundException{
         Conexao conexao = new Conexao();
         Connection connection = conexao.open();
-        String sql = "insert into generos_filmes(id_filme, genero) values(?, ?);"; 
+        String sql = "insert into atores_filmes(id_filme, nomeAtor) values(?, ?);"; 
         PreparedStatement prepared = connection.prepareStatement(sql);
         prepared.setInt(1, filme.getIdFilme());
-        prepared.setString(2, genero);
+        prepared.setString(2, ator);
         prepared.executeUpdate();
     }
+    
 }
