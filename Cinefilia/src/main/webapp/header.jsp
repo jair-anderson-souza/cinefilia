@@ -106,26 +106,96 @@
             </div>
         </div>
     </div>
+        <div id="deletarCadastro" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Excluir Conta</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form" action="controller?command=DeleteUsuarioCommand" method="post">
+                            <div class="modal-body">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title"></h4>
+                            </div>
 
-    <!-- Modal -->
-    <div id="login" class="modal fade" role="dialog">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" name="username" class="form-control" id="email">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Senha</label>
+                                <input type="password" name="password" class="form-control" id="password">
+                            </div>
+                            
+                            <button type="submit" class="btn btn-default">Excluir</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="editarCadastro" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Login</h4>
+                    <h4 class="modal-title">Editar Cadastro</h4>
                 </div>
                 <div class="modal-body">
-                    <form role="form" action="controller?command=LoginUsuarioCommand" method="post">
+                    <form role="form" action="controller?command=EditarUsuarioCommand" method="post">
+                        <div class="modal-body">
+                            <input type="file" name="foto" onchange="readURL(this);">
+                            <img src="#" id="foto" class="img-responsive">
+                        </div>
+
                         <div class="form-group">
-                            <label for="email">Username</label>
-                            <input type="email" name="username" class="form-control" id="email">
+                            <label for="primeiroNome">Nome</label>
+                            <input type="text" class="form-control" id="primeiroNome" name="primeiroNome" placeholder="${sessionScope.usuario.primeiroNome}" value="${sessionScope.usuario.primeiroNome}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="segundoNome" >Sobrenome</label>
+                            <input type="text" class="form-control" id="segundoNome" name="segundoNome" value="${sessionScope.usuario.segundoNome}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="apelido" >Apelido</label>
+                            <input type="text" class="form-control" id="apelido" name="apelido" value="${sessionScope.usuario.apelido}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" class="form-control" id="email" value="${sessionScope.usuario.email}">
                         </div>
 
                         <div class="form-group">
                             <label for="password">Senha</label>
-                            <input type="password" name="senha" class="form-control" id="password">
+                            <input type="password" name="password" class="form-control" id="password" value="${sessionScope.usuario.password}">
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="dataDeNascimento">Data de Nascimento</label>
+                            <input type="text" name="dataDeNascimento" class="form-control" id="dataDeNascimento" pattern="\d{1,2}/\d{1,2}/\d{4}" title="Padrão dd/MM/YYYY"  value="${sessionScope.usuario.dataDeNascimento}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cidade">Cidade</label>
+                            <input type="text" name="cidade" class="form-control" id="cidade" value="${sessionScope.usuario.cidade}">
+                        </div>
+                        <div class="form-group">
+                            <label for="estado">Estado</label>
+                            <input type="text" name="estado" class="form-control" id="estado" value="${sessionScope.usuario.estado}">
                         </div>
 
                         <div class="checkbox">
@@ -141,6 +211,42 @@
 
         </div>
     </div>
+</div>
+
+<!-- Modal -->
+<div id="login" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Login</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" action="controller?command=LoginUsuarioCommand" method="post">
+                    <div class="form-group">
+                        <label for="email">Username</label>
+                        <input type="email" name="username" class="form-control" id="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <input type="password" name="senha" class="form-control" id="password">
+                    </div>
+
+                    <div class="checkbox">
+                        <label><input type="checkbox">Lembrar</label>
+                    </div>
+                    <button type="submit" class="btn btn-default">Entrar</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 </div>
 
 <!-- Navigation -->
@@ -167,7 +273,7 @@
                 <li>
                     <a href="controller?command=RecuperaFilmesCommand">Filmes</a>
                 </li>
-                
+
                 <c:if test="${sessionScope.usuario == null}">
                     <li>
                         <a href="#" data-toggle="modal" data-target="#cadastro"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
@@ -175,7 +281,7 @@
                     <li>
                         <a href="#" data-toggle="modal" data-target="#login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
                     </li>
-                    
+
 
                 </c:if>
                 <c:if test="${sessionScope.usuario != null}">
@@ -184,6 +290,17 @@
                     </li>
                     <li>
                         <a href="#">Grupos</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Perfil <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#editarCadastro">Editar Perfil</a>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#deletarCadastro">Excluir Perfil</a>
+                            </li>
+                        </ul>
                     </li>
                 </c:if>
                 <li>
@@ -195,7 +312,7 @@
                                 <button class="btn btn-default" type="button"><span  class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                             </span>
                         </div>
-<!--                        <button type="submit" class="btn">Search<span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>-->
+                        <!--                        <button type="submit" class="btn">Search<span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>-->
                     </form>
                 </li>
             </ul>

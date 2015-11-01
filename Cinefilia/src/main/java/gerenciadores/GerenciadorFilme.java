@@ -12,6 +12,8 @@ import model.exceptions.CampoNuloException;
 import model.interfacesdaoifs.FilmeDaoIF;
 import model.values.Filme;
 
+
+
 /**
  *
  * @author Anderson Souza
@@ -42,12 +44,10 @@ public class GerenciadorFilme {
         }
     }
     
-    public boolean add(Filme filme, String email) throws CampoNuloException, SQLException, ClassNotFoundException {
+    public boolean add(Filme filme, String email) throws CampoNuloException, SQLException, ClassNotFoundException, Exception {
         this.validaFilme(filme);
         if(gerenciadorUsuario.verificarPrevilegioUsuario(email)) {
-            
             return dao.add(filme);
-            
         }
         return false;
     }

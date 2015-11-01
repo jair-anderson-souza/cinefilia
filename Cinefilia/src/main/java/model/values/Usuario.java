@@ -20,7 +20,8 @@ public class Usuario {
     private String estado;
     private String foto;
     private boolean tipo;
-
+    private boolean status;
+    
     public Usuario(String primeiroNome, String segundoNome, String apelido, String email, String password, String dataDeNascimento, String cidade, String estado, String foto) {
         this.primeiroNome = primeiroNome;
         this.segundoNome = segundoNome;
@@ -51,6 +52,15 @@ public class Usuario {
     
     }
 
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+    
+    
     public String getPrimeiroNome() {
         return primeiroNome;
     }

@@ -28,6 +28,7 @@
         <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
         <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
         <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+        
         <script>
             function readURL(input) {
                 if (input.files && input.files[0]) {
@@ -39,11 +40,7 @@
                                 .height(200);
                     };
                     reader.readAsDataURL(input.files[0]);
-                }
-            $("#plus").click(function(){
-                alert('Vai pow');
-            });
-        };
+                }};  
         </script>
     </head>
     <body>
@@ -56,12 +53,16 @@
                 <h1 class="page-header">Cadastro de Filmes</h1>
                 <form role="form" action="controller?command=AdicionarFilmeCommand" method="post">
                     <div class="modal-body">
-                        <input type="file" name="foto" onchange="readURL(this);">
+                        <input type="file" name="fotodf" onchange="readURL(this);">
                         <img src="#" id="foto" class="img-responsive">
                     </div>
                     <div class="form-group">
                         <label for="titulo">Titulo</label>
                         <input type="text" name="titulo" class="form-control" id="titulo">
+                    </div>
+                    <div class="form-group">
+                        <label for="titulo">Foto</label>
+                        <input type="text" name="foto" class="form-control" id="titulo">
                     </div>
                     <div class="form-group">
                         <label for="ano">Ano</label>
@@ -96,7 +97,7 @@
                         </div><br><br>
                         <div class="form-group">
                             <label>Atores</label>
-                            <div class="input-group">
+                            <div class="input-group" id="input_adicional">
                                 <input type="text" name="atores" id="formzinho" class="form-control">
                                     <span class="input-group-btn">
                                         <button class="btn btn-success" id="plus" type="button">

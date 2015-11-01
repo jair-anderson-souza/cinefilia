@@ -95,6 +95,7 @@ public class GerenciadorUsuario {
                     usuario.setPrimeiroNome(it.getPrimeiroNome());
                     usuario.setSegundoNome(it.getSegundoNome());
                     usuario.setTipo(it.isTipo());
+                    usuario.setStatus(it.isStatus());
                     return usuario;
                 }
             }

@@ -74,7 +74,7 @@ public class FilmeDao implements FilmeDaoIF{
         prepared.setInt(3, filme.getAno());
         ResultSet rs = prepared.executeQuery();
         rs.next();
-        int result = rs. getInt("id_filme");
+        int result = rs.getInt("id_filme");
         return result;
     }
     

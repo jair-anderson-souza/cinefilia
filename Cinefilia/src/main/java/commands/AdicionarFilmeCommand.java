@@ -28,33 +28,34 @@ public class AdicionarFilmeCommand implements Command {
             String[] listaDiretores = (String[]) request.getParameterValues("diretores");
             String[] listaGeneros = (String[]) request.getParameterValues("genero");
             String titulo = request.getParameter("titulo");
-            int ano = Integer.parseInt(request.getParameter("ano").toString().trim());
-            response.getWriter().println(request.getParameter("ano"));
+            int ano = Integer.parseInt(request.getParameter("ano"));
+
             String sinopse = request.getParameter("sinopse");
             Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
             String foto = request.getParameter("foto");
-            
-            Filme filme = new Filme(titulo, ano, sinopse, usuario.getEmail(), "fotoQQ");
+
+            Filme filme = new Filme(titulo, ano, sinopse, usuario.getEmail(), foto);
             GerenciadorFilme gerenciador = new GerenciadorFilme();
-            
+
             if (gerenciador.add(filme, usuario.getEmail())) {
                 filme.setIdFilme(gerenciador.recuperaFilmeCompleto(filme));
                 GerenciadorGeneros genero = new GerenciadorGeneros();
                 genero.addGenero(filme, listaGeneros);
-                
+
                 GerenciadorAtores atores = new GerenciadorAtores();
                 atores.addAtores(filme, listaAtores);
-                
+
                 GerenciadorDiretores diretores = new GerenciadorDiretores();
                 diretores.addDiretores(filme, listaDiretores);
-                
+
                 request.setAttribute("filme", filme);
                 request.getRequestDispatcher("index.jsp").forward(request, response);
 //          
+            } else {
+                response.sendError(20);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 }

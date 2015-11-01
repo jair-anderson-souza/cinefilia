@@ -49,7 +49,7 @@
         
     <div class="container">
         <div class="row">
-            <c:if test="${sessionScope.usuario != null}">
+            <c:if test="${sessionScope.usuario != null && sessionScope.usuario.tipo == true}">
                 <div class="col-md-10">
                     <a href="cadastrarFilmes.jsp" type="button" class="btn btn-success">
                         <span class="glyphicon glyphicon-plus"> Cadastrar Filme</span>
