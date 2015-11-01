@@ -34,11 +34,19 @@
     <body>
         
         <div class="container">
+            <c:if test="${sessionScope.usuario != null}">
+                <div class="col-md-10">
+                    <a href="cadastrarGrupo.jsp" type="button" class="btn btn-success">
+                        <span class="glyphicon glyphicon-plus"> Cadastrar Grupo</span>
+                    </a>
+                    <h2 class="page-header">Grupos</h2>
+                </div>  
+            </c:if>
             <div class="row"><br><br>
                 
             <div class="col-md-3">
                 <div class="list-group">
-                    <a href="" class="active list-group-item">Todos os Grupos</a>
+                    <a href="controller?command=RecuperaGruposCommand" class="list-group-item">Todos os Grupos</a>
                     <a href="controller?command=VerMeusGrupos" class="list-group-item">Meus Grupos</a>
                 </div>
             </div>

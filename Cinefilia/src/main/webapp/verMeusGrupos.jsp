@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -32,13 +33,13 @@
         <![endif]-->
     </head>
     <body>
-        
         <div class="container">
+            
             <div class="row"><br><br>
                 
             <div class="col-md-3">
                 <div class="list-group">
-                    <a href="controller?command=RecuperaGruposCommand" class="active list-group-item">Todos os Grupos</a>
+                    <a href="controller?command=RecuperaGruposCommand" class="list-group-item">Todos os Grupos</a>
                     <a href="controller?command=VerMeusGrupos" class="list-group-item">Meus Grupos</a>
                 </div>
             </div>

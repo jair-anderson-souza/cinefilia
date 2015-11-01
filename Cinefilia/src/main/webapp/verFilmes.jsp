@@ -48,23 +48,17 @@
     <body>
         
     <div class="container">
+        <h2 class="page-header">Filmes</h2>
         <div class="row">
             <c:if test="${sessionScope.usuario != null && sessionScope.usuario.tipo == true}">
                 <div class="col-md-10">
                     <a href="cadastrarFilmes.jsp" type="button" class="btn btn-success">
                         <span class="glyphicon glyphicon-plus"> Cadastrar Filme</span>
                     </a>
-                    <h2 class="page-header">Filmes</h2>
+                    
                 </div>  
             </c:if>
             
-            
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
             <c:forEach items="${requestScope.filmesCadastrados}" var="filme">
                 <div class="col-md-3 text-center">
                     <div class="thumbnail">

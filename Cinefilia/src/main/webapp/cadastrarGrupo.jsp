@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastrar Gêneros</title>
+        <title>Cadastrar Grupo</title>
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,85 +37,20 @@
         
         <div class="container">
             <div class="col-md-6">
-                <h1 class="page-header">Cadastro de Filmes</h1>
-                <form role="form" action="controller?command=AdicionarFilmeCommand" method="post">
-                    <div class="modal-body">
-                        <input type="file" name="fotodf" onchange="readURL(this);">
-                        <img src="#" id="foto" class="img-responsive">
-                    </div>
+                <h1 class="page-header"> Grupo</h1>
+                <form role="form" action="controller?command=AdicionarGrupoCommand" method="post">
+                    
                     <div class="form-group">
-                        <label for="titulo">Titulo</label>
-                        <input type="text" name="titulo" class="form-control" id="titulo">
+                        <label for="nomeGrupo">Nome do Grupo</label>
+                        <input type="text" name="nomeGrupo" class="form-control" id="nomeGrupo">
                     </div>
+                    
                     <div class="form-group">
-                        <label for="titulo">Foto</label>
-                        <input type="text" name="foto" class="form-control" id="titulo">
+                        <label for="descricaoTextual">Descricao Textual</label>
+                        <textarea name="descricaoTextual" class="form-control" rows="5" id="descricaoTextual" id="descricaoTextual"></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="ano">Ano</label>
-                        <input type="number" name="ano" class="form-control" id="ano">
-                    </div>
-                    <div class="form-group">
-                        <label for="sinopse">Sinopse</label>
-                        <textarea class="form-control" name="sinopse" rows="3" id="sinopse"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Generos</label><br>
-                        <div class="checkbox-inline" required>
-                            <label><input name="genero" value="acao" type="checkbox"> Açao</label>
-                        </div>
-                        <div class="checkbox-inline">
-                            <label><input name="genero" value="drama" type="checkbox"> Drama</label>
-                        </div>
-                        <div class="checkbox-inline">
-                            <label><input name="genero" value="romance" type="checkbox"> Romance</label>
-                        </div>
-                        <div class="checkbox-inline">
-                            <label><input name="genero" value="comedia" type="checkbox"> Comédia</label>
-                        </div>
-                        <div class="checkbox-inline">
-                            <label><input name="genero" value="thrash" type="checkbox"> Thrash</label>
-                        </div>
-                        <div class="checkbox-inline">
-                            <label><input name="genero" value="terror" type="checkbox"> Terror</label>
-                        </div>
-                        <div class="checkbox-inline">
-                            <label><input name="genero" value="suspense" type="checkbox"> Suspense</label>
-                        </div><br><br>
-                        <div class="form-group">
-                            <label>Atores</label>
-                            <div class="input-group" id="input_adicional">
-                                <input type="text" name="atores" id="formzinho" class="form-control">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-success" id="plus" type="button">
-                                            <span  class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                        </button>
-                                    </span>
-                            </div>
-                        </div>
                         
-                        <div class="form-group">
-                            <label>Diretores</label>
-                            <div class="input-group">
-                                <input type="text" name="diretores" class="form-control">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-success"  type="button">
-                                            <span  class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                        </button>
-                                    </span>
-                            </div>
-                        </div>
-                        
-                        
-                    </div>
-
-
-
-                    <br>
-                    <br>
-
-                    <div class="checkbox"></div>
-                    <button type="submit" class="btn btn-default">Cadastrar</button>
+                    <button type="submit" class="btn btn-success">Cadastrar</button>
                 </form>
             </div>
         </div>
