@@ -289,7 +289,7 @@
                         <a href="controller?command=VerTodosOsUsuarios">Usuarios</a>
                     </li>
                     <li>
-                        <a href="#">Grupos</a>
+                        <a href="controller?command=RecuperaGruposCommand">Grupos</a>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Perfil <b class="caret"></b></a>
