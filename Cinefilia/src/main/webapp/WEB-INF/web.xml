@@ -27,7 +27,7 @@
             <url-pattern>*.jsp</url-pattern>
             <pageEncoding>utf-8</pageEncoding>
             <include-prelude>header.jsp</include-prelude>
-            <nclude-coda>footer.jsp</nclude-coda>
+            <include-coda>footer.jsp</include-coda>
         </jsp-property-group>
     </jsp-config>
     
