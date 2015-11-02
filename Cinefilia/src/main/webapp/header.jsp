@@ -26,6 +26,17 @@
         <!-- Custom Fonts -->
         <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+        <script type="text/javascript" src="http://cidades-estados-js.googlecode.com/files/cidades-estados-v0.2.js"></script>
+        <script type="text/javascript">
+            window.onload = function () {
+                new dgCidadesEstados(
+                        document.getElementById('estado'),
+                        document.getElementById('cidade'),
+                        true
+                        );
+            }
+        </script>
+
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -75,27 +86,22 @@
                                 <label for="password">Senha</label>
                                 <input type="password" name="password" class="form-control" id="password">
                             </div>
-
-
-
                             <div class="form-group">
                                 <label for="dataDeNascimento">Data de Nascimento</label>
                                 <input type="text" name="dataDeNascimento" class="form-control" id="dataDeNascimento" pattern="\d{1,2}/\d{1,2}/\d{4}" title="Padrão dd/MM/YYYY">
+                            </div>                               
+                            <div class="form-group"> 
+                                <label>Estado</label>
+                                <select id="estado" name="estado" class="form-control"></select>
                             </div>
-
                             <div class="form-group">
-                                <label for="cidade">Cidade</label>
-                                <input type="text" name="cidade" class="form-control" id="cidade">
+                                <label>Cidade</label>
+                                <select id="cidade" name="cidade" class="form-control"></select>
                             </div>
-                            <div class="form-group">
-                                <label for="estado">Estado</label>
-                                <input type="text" name="estado" class="form-control" id="estado">
-                            </div>
-
                             <div class="checkbox">
                                 <label><input type="checkbox">Lembrar</label>
                             </div>
-                            <button type="submit" class="btn btn-default">Entrar</button>
+                            <button type="submit" class="btn btn-success">Salvar</button>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -119,23 +125,25 @@
                 <div class="modal-body">
                     <form role="form" action="controller?command=LoginUsuarioCommand" method="post">
                         <div class="form-group">
-                            <label for="email">Username</label>
+                            <label for="email"><span class="glyphicon glyphicon-user">Username</label>
                             <input type="email" name="username" class="form-control" id="email">
                         </div>
 
                         <div class="form-group">
-                            <label for="password">Senha</label>
+                            <label for="password"><span class="glyphicon glyphicon-eye-open"></span>Senha</label>
                             <input type="password" name="senha" class="form-control" id="password">
                         </div>
 
                         <div class="checkbox">
                             <label><input type="checkbox">Lembrar</label>
                         </div>
-                        <button type="submit" class="btn btn-default">Entrar</button>
+                        <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span>Entrar</button>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-default btn-warning pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                    <p>Not a member? <a href="#"data-dismiss="modal" data-toggle="modal" data-target="#cadastro">Sign Up</a></p>
+                    <p>Forgot <a href="#">Password?</a></p>
                 </div>
             </div>
 
@@ -143,11 +151,13 @@
     </div>
 </div>
 
+
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
+            <a class="navbar-brand" href="#">Cinefelia</a>
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -167,7 +177,7 @@
                 <li>
                     <a href="controller?command=RecuperaFilmesCommand">Filmes</a>
                 </li>
-                
+
                 <c:if test="${sessionScope.usuario == null}">
                     <li>
                         <a href="#" data-toggle="modal" data-target="#cadastro"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
@@ -175,7 +185,7 @@
                     <li>
                         <a href="#" data-toggle="modal" data-target="#login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
                     </li>
-                    
+
 
                 </c:if>
                 <c:if test="${sessionScope.usuario != null}">
@@ -195,7 +205,7 @@
                                 <button class="btn btn-default" type="button"><span  class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                             </span>
                         </div>
-<!--                        <button type="submit" class="btn">Search<span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>-->
+                        <!--                        <button type="submit" class="btn">Search<span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>-->
                     </form>
                 </li>
             </ul>
