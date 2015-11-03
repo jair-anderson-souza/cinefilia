@@ -24,6 +24,7 @@ public class Amizade {
     }
     
     
+    
     public String getEmailUsuario() {
         return emailUsuario;
     }

@@ -31,7 +31,7 @@
                         <h3>Cidade: ${requestScope.perfil.cidade} </h3>
                         <h3>Estado: ${requestScope.perfil.estado} </h3>
                         
-                        <a href="controller?command=AdicionarAosAmigos&email=${perfil.email}" class="btn btn-primary">Adicionar aos Amigos</a>
+                        <a href="controller?command=AdicionarAosAmigosCommand&email=${perfil.email}" class="btn btn-primary">Adicionar aos Amigos</a>
                     </div>
                 </div>
             </div>

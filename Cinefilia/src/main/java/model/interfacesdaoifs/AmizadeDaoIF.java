@@ -17,7 +17,7 @@ import model.values.Usuario;
  */
 public abstract class AmizadeDaoIF {
     
-    public abstract boolean add(Usuario usuario, String email) throws SQLException, ClassNotFoundException;
+    public abstract boolean add(Usuario usuario, String email, boolean aceito) throws SQLException, ClassNotFoundException;
 
     public abstract boolean update() throws SQLException, ClassNotFoundException;
 

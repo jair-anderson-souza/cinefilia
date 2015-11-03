@@ -295,6 +295,9 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Perfil <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
+                                <a href="controller?command=VerSolicitacoesDeAmizade">Ver Solicitações de Amizade</a>
+                            </li>
+                            <li>
                                 <a href="#" data-toggle="modal" data-target="#editarCadastro">Editar Perfil</a>
                             </li>
                             <li>
