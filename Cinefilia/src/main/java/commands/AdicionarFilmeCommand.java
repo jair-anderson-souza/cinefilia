@@ -7,9 +7,11 @@ package commands;
 
 import gerenciadores.GerenciadorFilme;
 import controllers.Command;
+import gerenciadores.GerenciadorAtores;
+import gerenciadores.GerenciadorDiretores;
+import gerenciadores.GerenciadorGeneros;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.exceptions.FilmeException;
 import model.values.Filme;
 import model.values.Usuario;
 
@@ -22,22 +24,36 @@ public class AdicionarFilmeCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         try {
+            String[] listaAtores = (String[]) request.getParameterValues("atores");
+            String[] listaDiretores = (String[]) request.getParameterValues("diretores");
+            String[] listaGeneros = (String[]) request.getParameterValues("genero");
             String titulo = request.getParameter("titulo");
             int ano = Integer.parseInt(request.getParameter("ano"));
+
             String sinopse = request.getParameter("sinopse");
-            Usuario usuario = (Usuario) request.getSession().getAttribute("usuario"); 
+            Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
             String foto = request.getParameter("foto");
-            
-            Filme filme = new Filme(titulo, ano, sinopse, foto, ano, usuario.getEmail());
+
+            Filme filme = new Filme(titulo, ano, sinopse, usuario.getEmail(), foto);
             GerenciadorFilme gerenciador = new GerenciadorFilme();
-            if(gerenciador.add(filme, usuario.getEmail())) {
-                //tel q mostra o cadastro com sucesso do filme
-                //request.setAttribute("filme", filme);
-                response.sendRedirect("verFilmes.jsp");
-            }else{
-                response.sendRedirect("erro.jsp");
+
+            if (gerenciador.add(filme, usuario.getEmail())) {
+                filme.setIdFilme(gerenciador.recuperaFilmeCompleto(filme));
+                GerenciadorGeneros genero = new GerenciadorGeneros();
+                genero.addGenero(filme, listaGeneros);
+
+                GerenciadorAtores atores = new GerenciadorAtores();
+                atores.addAtores(filme, listaAtores);
+
+                GerenciadorDiretores diretores = new GerenciadorDiretores();
+                diretores.addDiretores(filme, listaDiretores);
+
+                request.setAttribute("filme", filme);
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+//          
+            } else {
+                response.sendError(20);
             }
-            
         } catch (Exception e) {
             e.printStackTrace();
         }

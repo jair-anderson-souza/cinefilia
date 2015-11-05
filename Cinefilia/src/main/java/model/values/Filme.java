@@ -19,22 +19,23 @@ public class Filme {
 
     public Filme() {
     }
-
     
-    public Filme(String titulo, int ano, String sinopse, String foto, int id_filme, String id_usuario) {
-        this(titulo, ano, sinopse, foto, id_usuario);
-        this.idFilme = id_filme;
-    }
-    
-    public Filme(String titulo, int ano, String sinopse, String foto, String idUsuario) {
+    public Filme(String titulo, int ano, String sinopse, String foto, int id_filme, String IdUsuario){
         this.titulo = titulo;
         this.ano = ano;
         this.sinopse = sinopse;
         this.foto = foto;
-        this.idUsuario = idUsuario;
+        this.idFilme = id_filme;
+        this.idUsuario = IdUsuario;
     }
 
-    
+    public Filme(String titulo, int ano, String sinopse, String email_usuario, String foto) {
+        this.titulo = titulo;
+        this.ano = ano;
+        this.sinopse = sinopse;
+        this.idUsuario = email_usuario;
+        this.foto = foto;
+    }
 
     public String getTitulo() {
         return titulo;
@@ -72,8 +73,8 @@ public class Filme {
         return idFilme;
     }
 
-    public void setIdFilme(int IdFilme) {
-        this.idFilme = IdFilme;
+    public void setIdFilme(int idFilme) {
+        this.idFilme = idFilme;
     }
 
     public String getIdUsuario() {
@@ -83,9 +84,6 @@ public class Filme {
     public void setIdUsuario(String idUsuario) {
         this.idUsuario = idUsuario;
     }
-    
-    
-    
     
     
 }

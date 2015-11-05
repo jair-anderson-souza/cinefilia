@@ -1,7 +1,7 @@
 <%-- 
     Document   : verFilmes
     Created on : Oct 24, 2015, 2:01:00 AM
-    Author     : jairanderson
+    Author     : Anderson Souza
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -49,15 +49,18 @@
         
     <div class="container">
         <div class="row">
-            <div class="col-md-10">
-                <a href="cadastrarFilmes.jsp" type="button" class="btn btn-danger">
-                    <span class="glyphicon glyphicon-plus"> Cadastrar Filme</span>
-                </a>
-                <h2 class="page-header">Filmes</h2>
+            <c:if test="${sessionScope.usuario != null && sessionScope.usuario.tipo == true}">
+                <div class="col-md-10">
+                    <a href="cadastrarFilmes.jsp" type="button" class="btn btn-success">
+                        <span class="glyphicon glyphicon-plus"> Cadastrar Filme</span>
+                    </a>
+                    <h2 class="page-header">Filmes</h2>
+                    
+                </div>  
+            </c:if>
             
-            </div>
-            
-            <c:forEach items="${sessionScope.filmesCadastrados}" var="filme">
+            <c:forEach items="${requestScope.filmesCadastrados}" var="filme">
+                
                 <div class="col-md-3 text-center">
                     <div class="thumbnail">
                         <div class="caption">
@@ -81,10 +84,10 @@
                             <a href="#">&laquo;</a>
                         </li>
                         <li class="active">
-                            <a href="#">1</a>
+                            <a href="verFilmes.jsp">1</a>
                         </li>
                         <li>
-                            <a href="#">2</a>
+                            <a href="verFilmes2.jsp?end=11">2</a>
                         </li>
                         <li>
                             <a href="#">3</a>

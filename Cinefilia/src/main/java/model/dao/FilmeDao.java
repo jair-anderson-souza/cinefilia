@@ -64,6 +64,20 @@ public class FilmeDao implements FilmeDaoIF{
         return prepared.execute();
     }
     
+    public int buscaIdFilmePorDados(Filme filme) throws SQLException, ClassNotFoundException{
+        Conexao conexao = new Conexao();
+        Connection connection = conexao.open();
+        String sql = "select * from filme where titulo = ? and sinopse = ? and ano = ?;";
+        PreparedStatement prepared = connection.prepareStatement(sql);
+        prepared.setString(1, filme.getTitulo());
+        prepared.setString(2, filme.getSinopse());
+        prepared.setInt(3, filme.getAno());
+        ResultSet rs = prepared.executeQuery();
+        rs.next();
+        int result = rs.getInt("id_filme");
+        return result;
+    }
+    
     public List<Filme> buscaFilmePorTitulo(String titulo) throws SQLException, ClassNotFoundException, ParseException{
         Conexao conexao = new Conexao();
         Connection connection = conexao.open();

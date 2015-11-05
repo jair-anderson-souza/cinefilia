@@ -65,7 +65,7 @@ public class GerenciadorGrupo {
         return false;
     }
     
-    public List<Grupo> meusGrupos(String email){
+    public List<Grupo> meusGrupos(String email) {
         try{
             List<Integer> lista = this.listaTodosOsGrupos(email);
             List<Grupo> listaFinal = new ArrayList();
@@ -79,6 +79,15 @@ public class GerenciadorGrupo {
             }
             return listaFinal;
         }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public List<Grupo> listaTodosOsGrupos() {
+        try {
+            return dao.buscaGrupos();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;

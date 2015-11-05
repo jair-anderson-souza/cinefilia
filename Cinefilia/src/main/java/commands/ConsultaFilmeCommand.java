@@ -25,7 +25,7 @@ public class ConsultaFilmeCommand implements Command {
             Filme filme = gerenciador.buscaFilme(id_filme);
             if(filme != null){
                 request.setAttribute("filme", filme);
-                request.getRequestDispatcher("sobre.jsp").forward(request, response);
+                request.getRequestDispatcher("sobreFilme.jsp").forward(request, response);
             }else {
                 request.getRequestDispatcher("erro.jsp").forward(request, response);
             }

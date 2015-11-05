@@ -88,7 +88,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="dataDeNascimento">Data de Nascimento</label>
-                                <input type="text" name="dataDeNascimento" class="form-control" id="dataDeNascimento" pattern="\d{1,2}/\d{1,2}/\d{4}" title="PadrÃ£o dd/MM/YYYY">
+                                <input type="datetime" name="dataDeNascimento" class="form-control" id="dataDeNascimento" pattern="\d{1,2}/\d{1,2}/\d{4}" title="PadrÃ£o dd/MM/YYYY">
                             </div>                               
                             <div class="form-group"> 
                                 <label>Estado</label>
@@ -112,43 +112,154 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal -->
-    <div id="login" class="modal fade" role="dialog">
+    <div id="deletarCadastro" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Login</h4>
+                    <h4 class="modal-title">Excluir Conta</h4>
                 </div>
                 <div class="modal-body">
-                    <form role="form" action="controller?command=LoginUsuarioCommand" method="post">
+                    <form role="form" action="controller?command=DeleteUsuarioCommand" method="post">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title"></h4>
+                        </div>
+
                         <div class="form-group">
-                            <label for="email"><span class="glyphicon glyphicon-user">Username</label>
+                            <label for="email">Email</label>
                             <input type="email" name="username" class="form-control" id="email">
                         </div>
 
                         <div class="form-group">
-                            <label for="password"><span class="glyphicon glyphicon-eye-open"></span>Senha</label>
-                            <input type="password" name="senha" class="form-control" id="password">
+                            <label for="password">Senha</label>
+                            <input type="password" name="password" class="form-control" id="password">
                         </div>
 
-                        <div class="checkbox">
-                            <label><input type="checkbox">Lembrar</label>
-                        </div>
-                        <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span>Entrar</button>
+                        <button type="submit" class="btn btn-default">Excluir</button>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-default btn-warning pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-                    <p>Not a member? <a href="#"data-dismiss="modal" data-toggle="modal" data-target="#cadastro">Sign Up</a></p>
-                    <p>Forgot <a href="#">Password?</a></p>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
                 </div>
             </div>
 
         </div>
     </div>
+</div>
+<div id="editarCadastro" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Editar Cadastro</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" action="controller?command=EditarUsuarioCommand" method="post">
+                    <div class="modal-body">
+                        <input type="file" name="foto" onchange="readURL(this);">
+                        <img src="#" id="foto" class="img-responsive">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email"><span class="glyphicon glyphicon-user">Username</label>
+                        <input type="email" name="username" class="form-control" id="email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="primeiroNome">Nome</label>
+                        <input type="text" class="form-control" id="primeiroNome" name="primeiroNome" placeholder="${sessionScope.usuario.primeiroNome}" value="${sessionScope.usuario.primeiroNome}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="segundoNome" >Sobrenome</label>
+                        <input type="text" class="form-control" id="segundoNome" name="segundoNome" value="${sessionScope.usuario.segundoNome}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="apelido" >Apelido</label>
+                        <input type="text" class="form-control" id="apelido" name="apelido" value="${sessionScope.usuario.apelido}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" class="form-control" id="email" value="${sessionScope.usuario.email}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password"><span class="glyphicon glyphicon-eye-open"></span>Senha</label>
+                        <input type="password" name="senha" class="form-control" id="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <input type="password" name="password" class="form-control" id="password" value="${sessionScope.usuario.password}">
+                    </div>
+                    <div class="form-group">
+                        <label for="dataDeNascimento">Data de Nascimento</label>
+                        <input type="datetime" name="dataDeNascimento" class="form-control" id="dataDeNascimento" pattern="\d{1,2}/\d{1,2}/\d{4}" title="PadrÃ£o dd/MM/YYYY"  value="${sessionScope.usuario.dataDeNascimento}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cidade">Cidade</label>
+                        <input type="text" name="cidade" class="form-control" id="cidade" value="${sessionScope.usuario.cidade}">
+                    </div>
+                    <div class="form-group">
+                        <label for="estado">Estado</label>
+                        <input type="text" name="estado" class="form-control" id="estado" value="${sessionScope.usuario.estado}">
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox">Lembrar</label>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span>Salvar</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<!-- Modal -->
+<div id="login" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Login</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" action="controller?command=LoginUsuarioCommand" method="post">
+                    <div class="form-group">
+                        <label for="email"><span class="glyphicon glyphicon-user"></span>Username</label>
+                        <input type="email" name="username" class="form-control" id="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password"><span class="glyphicon glyphicon-eye-open"></span>Senha</label>
+                        <input type="password" name="senha" class="form-control" id="password">
+                    </div>
+
+                    <div class="checkbox">
+                        <label><input type="checkbox">Lembrar</label>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block">Entrar</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-default btn-warning pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                <p>Not a member? <a href="#"data-dismiss="modal" data-toggle="modal" data-target="#cadastro">Sign Up</a></p>
+                <p>Forgot <a href="#">Password?</a></p>
+            </div>
+        </div>
+
+    </div>
+</div>
 </div>
 
 
@@ -157,7 +268,7 @@
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Cinefelia</a>
+            <a class="navbar-brand" href="index.jsp">Cinefelia</a>
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -168,14 +279,10 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right">               
 
                 <li>
-                    <a href="index.jsp">Pagina Inicial</a>
-                </li>
-
-                <li>
-                    <a href="controller?command=RecuperaFilmesCommand">Filmes</a>
+                    <a href="controller?command=RecuperaFilmesCommand"><span class="glyphicon glyphicon-film"></span> Filmes</a>
                 </li>
 
                 <c:if test="${sessionScope.usuario == null}">
@@ -193,7 +300,24 @@
                         <a href="controller?command=VerTodosOsUsuarios">Usuarios</a>
                     </li>
                     <li>
-                        <a href="#">Grupos</a>
+                        <a href="controller?command=RecuperaGruposCommand"><span class="glyphicons glyphicons-group"></span>Grupos</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Perfil <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="controller?command=VerSolicitacoesDeAmizade"><span class="glyphicon glyphicon-flag"></span> Ver Solicitações de Amizade</a>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#editarCadastro"><span class="glyphicon glyphicon-cog"></span> Editar Perfil</a>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#deletarCadastro"><span class="glyphicon glyphicon-remove"></span> Excluir Perfil</a>
+                            </li>
+                            <li>
+                                <a href="#"><span class="glyphicon glyphicon-off"></span> Sair</a>
+                            </li>
+                        </ul>
                     </li>
                 </c:if>
                 <li>

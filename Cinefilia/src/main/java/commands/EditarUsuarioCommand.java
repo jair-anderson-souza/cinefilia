@@ -36,7 +36,7 @@ public class EditarUsuarioCommand implements Command {
             
             if(gerenciador.editar(user, usuario.getEmail())) {
                 request.getSession().setAttribute("usuario", user);
-                response.sendRedirect("home.jsp");
+                response.sendRedirect("index.jsp");
             }else{
                 response.sendRedirect("erro.jsp");
             }

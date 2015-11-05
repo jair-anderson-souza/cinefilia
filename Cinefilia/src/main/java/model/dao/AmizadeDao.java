@@ -15,7 +15,7 @@ import java.util.List;
 import model.conexao.Conexao;
 import model.interfacesdaoifs.AmizadeDaoIF;
 import model.values.Amizade;
-import model.values.Filme;
+import model.values.Usuario;
 
 /**
  *
@@ -24,8 +24,15 @@ import model.values.Filme;
 public class AmizadeDao extends AmizadeDaoIF {
 
     @Override
-    public boolean add() throws SQLException, ClassNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean add(Usuario usuario, String email, boolean aceito) throws SQLException, ClassNotFoundException {
+        Conexao conexao = new Conexao();
+        Connection connection = conexao.open();
+        String sql = "insert into relacionar_amigo(email_usuario, email_amigo, aceito) values(?, ?, ?);"; 
+        PreparedStatement prepared = connection.prepareStatement(sql);
+        prepared.setString(1, usuario.getEmail());
+        prepared.setString(2, email);
+        prepared.setBoolean(3, aceito);
+        return prepared.executeUpdate() > 0;
     }
 
     @Override

@@ -26,6 +26,7 @@ public class DeleteUsuarioCommand implements Command {
             String password = request.getParameter("password");
             
             GerenciadorUsuario gerenciador = new GerenciadorUsuario();
+            
             if(gerenciador.delete(username, password)) {
                 HttpSession session = request.getSession();
                 session.invalidate();

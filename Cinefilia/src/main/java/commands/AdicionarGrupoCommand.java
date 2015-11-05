@@ -37,7 +37,7 @@ public class AdicionarGrupoCommand implements Command {
                 int id = gerenciador.retornaGrupo(grupo.getNomeGrupo());
                 GerenciadorParticipacaoGrupo gerenciadorParticipacao = new GerenciadorParticipacaoGrupo();
                 gerenciadorParticipacao.add(id, usuario.getEmail());
-                response.sendRedirect("home.jsp");
+                response.sendRedirect("index.jsp");
             }else response.sendRedirect("erro.jsp");
             
             

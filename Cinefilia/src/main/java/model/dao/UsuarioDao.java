@@ -33,7 +33,7 @@ public class UsuarioDao implements UsuarioDaoIF {
     public boolean add(Usuario usuario) throws SQLException, ClassNotFoundException, DaoException {
         
             Connection connection = conexao.open();
-            String sql = "insert into usuario(primeironome, segundonome, apelido, email, senha, datanascimento, cidade, estado, foto, tipo) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            String sql = "insert into usuario(primeironome, segundonome, apelido, email, senha, datanascimento, cidade, estado, foto, tipo, status) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement prepared = connection.prepareStatement(sql);
             prepared.setString(1, usuario.getPrimeiroNome());
             prepared.setString(2, usuario.getSegundoNome());
@@ -45,6 +45,7 @@ public class UsuarioDao implements UsuarioDaoIF {
             prepared.setString(8, usuario.getEstado());
             prepared.setString(9, usuario.getFoto());
             prepared.setBoolean(10, usuario.isTipo());
+            prepared.setBoolean(11, true);
             return prepared.executeUpdate() > 0;
     }
     
@@ -145,7 +146,7 @@ public class UsuarioDao implements UsuarioDaoIF {
     @Override
     public boolean delete(String username) throws SQLException, ClassNotFoundException {
         Connection connection = conexao.open();
-        String sql = "delete from usuario where email = ? || apelido=?;";
+        String sql = "update usuario set status = 0 where email = ? || apelido=?;";
         PreparedStatement prepared = connection.prepareStatement(sql);
         prepared.setString(1, username);
         prepared.setString(2, username);
