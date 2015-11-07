@@ -24,12 +24,16 @@ public class AdicionarFilmeCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         try {
+            
             String[] listaAtores = (String[]) request.getParameterValues("atores");
             String[] listaDiretores = (String[]) request.getParameterValues("diretores");
             String[] listaGeneros = (String[]) request.getParameterValues("genero");
             String titulo = request.getParameter("titulo");
-            int ano = Integer.parseInt(request.getParameter("ano"));
-
+            
+            int ano = Integer.valueOf(request.getParameter("ano").trim());
+            //response.getWriter().println(ano);
+            
+            
             String sinopse = request.getParameter("sinopse");
             Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
             String foto = request.getParameter("foto");
@@ -38,7 +42,9 @@ public class AdicionarFilmeCommand implements Command {
             GerenciadorFilme gerenciador = new GerenciadorFilme();
 
             if (gerenciador.add(filme, usuario.getEmail())) {
+                
                 filme.setIdFilme(gerenciador.recuperaFilmeCompleto(filme));
+                
                 GerenciadorGeneros genero = new GerenciadorGeneros();
                 genero.addGenero(filme, listaGeneros);
 
@@ -49,10 +55,12 @@ public class AdicionarFilmeCommand implements Command {
                 diretores.addDiretores(filme, listaDiretores);
 
                 request.setAttribute("filme", filme);
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                request.getRequestDispatcher("cadastrarFilmes.jsp").forward(request, response);
+                request.setAttribute("adicionado", true);
 //          
-            } else {
-                response.sendError(20);
+            } else{
+                request.getRequestDispatcher("cadastrarFilmes.jsp").forward(request, response);
+                request.setAttribute("adicionado", false);
             }
         } catch (Exception e) {
             e.printStackTrace();

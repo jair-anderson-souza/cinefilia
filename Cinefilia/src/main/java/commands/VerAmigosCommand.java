@@ -27,9 +27,8 @@ public class VerAmigosCommand implements Command {
             List<Usuario> amigos = gerenciador.retornaAmigos(usuario.getEmail());
             request.setAttribute("amigos", amigos);
             
-//            /response.getWriter().println(amigos);
             
-            RequestDispatcher disp = request.getRequestDispatcher("mostrarAmigos.jsp");
+            RequestDispatcher disp = request.getRequestDispatcher("verAmigos.jsp");
             disp.forward(request, response);
             
         }catch(Exception e){

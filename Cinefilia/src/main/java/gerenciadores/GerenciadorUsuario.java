@@ -153,13 +153,15 @@ public class GerenciadorUsuario {
         return false;
     }
 
-    private List<Amizade> listaTodasAsAmizades(String email) {
+    private List<String> listaTodasAsAmizades(String email) {
         try {
-            List<Amizade> amigos = new ArrayList();
+            List<String> amigos = new ArrayList();
             List<Amizade> lista = daoAmizade.buscaAmizades();
             for (Amizade it : lista) {
-                if (it.getEmailUsuario().equals(email)) {
-                    amigos.add(it);
+                if (it.getEmailUsuario().equals(email) && it.isAceito()) {
+                    amigos.add(it.getEmailAmigo());
+                }else if(it.getEmailAmigo().equals(email) && it.isAceito()){
+                    amigos.add(it.getEmailUsuario());
                 }
             }
             return amigos;
@@ -189,13 +191,14 @@ public class GerenciadorUsuario {
 
     public List<Usuario> retornaAmigos(String email) {
         try {
-            List<Amizade> listaAmizades = this.listaTodasAsAmizades(email);
-            List<Usuario> listaAmigos = new ArrayList();
+            List<String> listaAmizades = this.listaTodasAsAmizades(email);
+            List<Usuario> listaAmigos = dao.buscaUsuarios();
             List<Usuario> lista = new ArrayList();
-            for (Amizade amizades : listaAmizades) {
+            for (String amizades : listaAmizades) {
                 for (Usuario usuarios : listaAmigos) {
-                    if(amizades.getEmailAmigo().equals(usuarios.getEmail()) && amizades.isAceito())
+                    if(amizades.equals(usuarios.getEmail())){
                         lista.add(usuarios);
+                    }    
                 }
             }
             return lista;

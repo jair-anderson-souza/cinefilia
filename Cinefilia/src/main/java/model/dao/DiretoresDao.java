@@ -21,7 +21,7 @@ public class DiretoresDao implements DiretoresDaoIF {
     public void addDiretores(Filme filme, String ator) throws SQLException, ClassNotFoundException{
         Conexao conexao = new Conexao();
         Connection connection = conexao.open();
-        String sql = "insert into diretores_filmes(id_filme, nomeAtor) values(?, ?);"; 
+        String sql = "insert into diretores_filmes(id_filme, nomeDiretor) values(?, ?);"; 
         PreparedStatement prepared = connection.prepareStatement(sql);
         prepared.setInt(1, filme.getIdFilme());
         prepared.setString(2, ator);

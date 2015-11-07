@@ -49,7 +49,7 @@
                 <div class="col-md-3">
                     <div class="list-group">
                         <a href="controller?command=VerTodosOsUsuarios" class="list-group-item">Todos os Usuarios</a>
-                        <a href="controller?command=" class="list-group-item">Meus Amigos</a>
+                        <a href="controller?command=VerAmigosCommand" class="list-group-item">Meus Amigos</a>
                     </div>
                 </div>
                 <!--Content Column--> 

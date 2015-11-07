@@ -40,7 +40,7 @@
                                 .height(200);
                     };
                     reader.readAsDataURL(input.files[0]);
-                }};  
+                }};
         </script>
     </head>
     <body>
@@ -48,6 +48,7 @@
         <br>
         <br>
         <br>
+        
         <div class="container">
             <div class="col-md-6">
                 <h1 class="page-header">Cadastro de Filmes</h1>
@@ -66,7 +67,7 @@
                     </div>
                     <div class="form-group">
                         <label for="ano">Ano</label>
-                        <input type="number" name="ano" class="form-control" id="ano">
+                        <input type="text" name="ano" class="form-control" id="ano">
                     </div>
                     <div class="form-group">
                         <label for="sinopse">Sinopse</label>
@@ -95,12 +96,13 @@
                         <div class="checkbox-inline">
                             <label><input name="genero" value="suspense" type="checkbox"> Suspense</label>
                         </div><br><br>
+                        
                         <div class="form-group">
                             <label>Atores</label>
-                            <div class="input-group" id="input_adicional">
-                                <input type="text" name="atores" id="formzinho" class="form-control">
+                            <div class="input-group">
+                                <input type="text" name="atores" class="form-control">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-success" id="plus" type="button">
+                                        <button class="btn btn-success addActor" type="button">
                                             <span  class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                         </button>
                                     </span>
@@ -137,6 +139,8 @@
         <br>
         <br>
         <br>
+        
+        
         <!-- jQuery -->
         <script src="js/jquery.js"></script>
 
