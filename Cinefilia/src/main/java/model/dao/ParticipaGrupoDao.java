@@ -32,7 +32,7 @@ public class ParticipaGrupoDao extends ParticipaGrupoDaoIF {
         Connection connection = conexao.open();
         PreparedStatement ps = connection.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
-        List<ParticipantesGrupo> lista = new ArrayList();
+        List<ParticipantesGrupo> lista = new ArrayList<>();
         
         while(rs.next()){
             int id_grupo = rs.getInt("id_grupo");

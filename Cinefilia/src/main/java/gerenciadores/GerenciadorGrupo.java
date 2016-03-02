@@ -68,7 +68,7 @@ public class GerenciadorGrupo {
     public List<Grupo> meusGrupos(String email) {
         try{
             List<Integer> lista = this.listaTodosOsGrupos(email);
-            List<Grupo> listaFinal = new ArrayList();
+            List<Grupo> listaFinal = new ArrayList<>();
             List<Grupo> listaGrupos = dao.buscaGrupos();
             for (int i = 0; i < lista.size(); i++) {
                 for (Grupo grupo : listaGrupos) {
@@ -95,7 +95,7 @@ public class GerenciadorGrupo {
     
     public List<Integer> listaTodosOsGrupos(String email) {
         try {
-            List<Integer> listaMeusGrupos = new ArrayList();
+            List<Integer> listaMeusGrupos = new ArrayList<>();
             List<ParticipantesGrupo> participantes = daoParticipantes.buscaParticipantes();
 
             for (ParticipantesGrupo it : participantes) {
